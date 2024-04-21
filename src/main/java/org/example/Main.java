@@ -20,5 +20,6 @@ public class Main {
         university.setYearOfFoundation(1906);
         university.setMainProfile(StudyProfile.BIOLOGY);
         System.out.println(university);
+
     }
 }
