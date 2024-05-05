@@ -1,25 +1,29 @@
 package org.example;
 
+import Comparator.UniversityComparator;
+import Enum.UniversityCompType;
+import Enum.StudentCompType;
+import Comparator.StudentComparator;
+import IO.XlsReader;
 import ModelClass.Student;
 import ModelClass.University;
-import Enum.StudyProfile;
+import Util.CompUtil;
+
+import java.io.IOException;
+import java.util.Comparator;
+import java.util.List;
 
 public class Main {
-    public static void main(String[] args) {
-        Student student = new Student();
-        student.setFullName("Мушкин Александр Сергеевич");
-        student.setAvgExamScore((float) 4.0);
-        student.setCurrentCourseNumber(4);
-        student.setUniversityId("0010");
-        System.out.println(student);
-
-        University university = new University();
-        university.setId("0010");
-        university.setFullName("Russian Scientific University");
-        university.setShortName("RSU");
-        university.setYearOfFoundation(1906);
-        university.setMainProfile(StudyProfile.BIOLOGY);
-        System.out.println(university);
-
+    public static void main(String[] args) throws IOException {
+        List<University> universities = XlsReader.readXlsUniversities("src/main/resources/universityInfo.xlsx");
+        UniversityComparator universityComparator = CompUtil.getUniversityComprator(UniversityCompType.ID);
+        universities.stream()
+                .sorted(universityComparator)
+                .forEach(System.out::println);
+        List<Student> students = XlsReader.readXlsStudents("src/main/resources/universityInfo.xlsx");
+        StudentComparator studentComparator = CompUtil.getStudentComparator(StudentCompType.AVGEXAMSCORE);
+        students.stream()
+                .sorted(studentComparator)
+                .forEach(System.out::println);
     }
 }
