@@ -1,11 +1,12 @@
-package Util;
+package util;
 
-import Comparator.*;
-import Enum.StudentCompType;
-import Enum.UniversityCompType;
+import comparator.*;
+import enums.StudentCompType;
+import enums.UniversityCompType;
 
 public class CompUtil {
     private CompUtil() {}
+
     public static StudentComparator getStudentComparator(StudentCompType studentCompType) {
        switch (studentCompType) {
            case FULLNAME -> {
