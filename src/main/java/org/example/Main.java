@@ -5,10 +5,13 @@ import enums.UniversityCompType;
 import enums.StudentCompType;
 import comparator.StudentComparator;
 import io.XlsReader;
+import io.XlsWriter;
+import model.classes.Statistics;
 import model.classes.Student;
 import model.classes.University;
 import util.CompUtil;
 import util.JsonUtil;
+import util.StatisticsUtil;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,6 +23,7 @@ public class Main {
         universities.sort(universityComparator);
         String universitiesJson = JsonUtil.UniversityLIsttoJson(universities);
         System.out.println(universitiesJson);
+
         List<University> universitiesfromJson = JsonUtil.UniversityListfromJson(universitiesJson);
         System.out.println(universities.size() == universitiesfromJson.size());
         universities.forEach(university -> {
@@ -34,6 +38,7 @@ public class Main {
         students.sort(studentComparator);
         String studentsJson = JsonUtil.StudentListtoJson(students);
         System.out.println(studentsJson);
+
         List<Student> studentsfromJson = JsonUtil.StudentListfromJson(studentsJson);
         System.out.println(studentsfromJson.size() == students.size());
         students.forEach(student -> {
@@ -42,5 +47,8 @@ public class Main {
             Student studentfromJson = JsonUtil.StudentfromJson(studentJson);
             System.out.println(studentfromJson);
         });
+
+        List<Statistics> statisticsList = StatisticsUtil.createStatisticsList(students, universities);
+        XlsWriter.writeXlsStatistics(statisticsList, "statistics.xlsx");
     }
 }
