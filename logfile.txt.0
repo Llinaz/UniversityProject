@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-05-26T13:58:40.085851700Z</date>
+  <millis>1716731920085</millis>
+  <nanos>851700</nanos>
+  <sequence>0</sequence>
+  <logger>org.example.Main</logger>
+  <level>INFO</level>
+  <class>org.example.Main</class>
+  <method>main</method>
+  <thread>1</thread>
+  <message>Applcation started, logger configured</message>
+</record>
+<record>
+  <date>2024-05-26T13:58:40.206397600Z</date>
+  <millis>1716731920206</millis>
+  <nanos>397600</nanos>
+  <sequence>1</sequence>
+  <logger>io.XlsReader</logger>
+  <level>INFO</level>
+  <class>io.XlsReader</class>
+  <method>readXlsUniversities</method>
+  <thread>1</thread>
+  <message>Excel reading started</message>
+</record>
+</log>
